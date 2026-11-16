@@ -7,35 +7,21 @@
   ],
   "conciertos": [
     {
-      "dia": "12",
-      "mes_anio": "Dic 2026",
-      "titulo": "Concierto de Navidad barroca",
-      "lugar": "Teatro Cuyás · Las Palmas de Gran Canaria",
-      "hora": "20:00 h"
-    },
-    {
-      "dia": "21",
-      "mes_anio": "Ene 2027",
-      "titulo": "Recital de arias y cantatas",
-      "lugar": "Auditorio · Canarias",
-      "hora": "19:30 h"
-    },
-    {
-      "dia": "06",
-      "mes_anio": "Mar 2027",
-      "titulo": "Música antigua en la Catedral",
-      "lugar": "Catedral de Santa Ana · Las Palmas de Gran Canaria",
-      "hora": "21:00 h"
+      "dia": "14",
+      "mes_anio": "Marzo 2027",
+      "titulo": "Concierto de compositoras",
+      "lugar": "Gabinete Literario - Las Palmas de Gran Canaria",
+      "hora": "12"
     }
   ],
   "videos": [
     {
-      "titulo": "Aria barroca",
-      "id": ""
+      "titulo": "Ombra mai fu - Händel",
+      "id": "https://youtu.be/KiH6BuiNp2c?si=90MQG4Y2ldTiTETN"
     },
     {
-      "titulo": "Concierto en directo",
-      "id": ""
+      "titulo": "A Chloris - R. Hahn",
+      "id": "https://youtu.be/R3gQxdE8t54?si=_6IVAZlYiHdAcVgH"
     }
   ]
 }
