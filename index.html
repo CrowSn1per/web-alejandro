@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alejandro Robaina | Sopranista</title>
+  <meta name="description" content="Alejandro Robaina, sopranista canario especializado en música barroca, antigua y lírica. Conciertos, repertorio y contacto." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            carbon: '#111111',
+            carbon2: '#181818',
+            carbon3: '#222222',
+            gold: '#c9a961',
+            goldsoft: '#e0c98f',
+            mist: '#f3f4f6'
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            title: ['Cinzel', 'serif'],
+            sans: ['Inter', 'system-ui', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Netlify Identity (inicio de sesión del panel /admin) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+
+  <!-- Font Awesome (iconos) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <style>
+    html { scroll-padding-top: 80px; }
+    body { background: #111; color: #f3f4f6; font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+
+    /* Revelado al hacer scroll */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .9s ease, transform .9s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal.delay-1 { transition-delay: .12s; }
+    .reveal.delay-2 { transition-delay: .24s; }
+    .reveal.delay-3 { transition-delay: .36s; }
+
+    /* Línea decorativa dorada */
+    .gold-line { height: 1px; width: 72px; background: linear-gradient(90deg, transparent, #c9a961, transparent); }
+
+    /* Hero */
+    .hero-bg {
+      background:
+        radial-gradient(ellipse at 50% 30%, rgba(201,169,97,.14), transparent 60%),
+        linear-gradient(180deg, rgba(17,17,17,.55) 0%, #111 100%),
+        url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat,
+        #111;
+    }
+
+    /* Tarjetas */
+    .card { transition: transform .4s ease, border-color .4s ease, box-shadow .4s ease; }
+    .card:hover { transform: translateY(-6px); border-color: rgba(201,169,97,.55); box-shadow: 0 18px 40px -18px rgba(201,169,97,.25); }
+
+    /* Navbar */
+    #navbar { transition: background .4s ease, border-color .4s ease, backdrop-filter .4s ease; }
+    #navbar.scrolled { background: rgba(17,17,17,.88); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(201,169,97,.18); }
+    .nav-link { position: relative; }
+    .nav-link::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 1px; background: #c9a961; transition: width .35s ease; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+    /* Menú móvil */
+    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height .5s ease; }
+    #mobile-menu.open { max-height: 480px; }
+
+    /* Campos del formulario */
+    .field { background: transparent; border: 0; border-bottom: 1px solid #3a3a3a; transition: border-color .3s ease; }
+    .field:focus { outline: none; border-bottom-color: #c9a961; }
+
+    /* Media */
+    .media-thumb { background: linear-gradient(135deg, #1d1d1d, #0f0f0f); }
+    .play-btn { transition: transform .35s ease, background .35s ease; }
+    .media-item:hover .play-btn { transform: scale(1.12); background: #c9a961; color: #111; }
+
+    ::selection { background: #c9a961; color: #111; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { transition: none; opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+
+<body class="antialiased">
+
+  <!-- ============ NAVBAR ============ -->
+  <header id="navbar" class="fixed top-0 inset-x-0 z-50 border-b border-transparent">
+    <nav class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#inicio" class="font-title text-lg sm:text-xl tracking-[.18em] text-mist hover:text-gold transition-colors">
+        ALEJANDRO ROBAINA
+      </a>
+
+      <ul class="hidden md:flex items-center gap-9 text-sm tracking-widest uppercase">
+        <li><a href="#biografia" class="nav-link text-gray-300 hover:text-gold transition-colors">Biografía</a></li>
+        <li><a href="#conciertos" class="nav-link text-gray-300 hover:text-gold transition-colors">Conciertos</a></li>
+        <li><a href="#repertorio" class="nav-link text-gray-300 hover:text-gold transition-colors">Repertorio</a></li>
+        <li><a href="#media" class="nav-link text-gray-300 hover:text-gold transition-colors">Media</a></li>
+        <li><a href="#contacto" class="nav-link text-gray-300 hover:text-gold transition-colors">Contacto</a></li>
+      </ul>
+
+      <button id="menu-btn" class="md:hidden text-mist text-2xl w-10 h-10 flex items-center justify-center" aria-label="Abrir menú" aria-expanded="false" aria-controls="mobile-menu">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+      </button>
+    </nav>
+
+    <div id="mobile-menu" class="md:hidden bg-carbon/95 backdrop-blur-md border-t border-gold/10">
+      <ul class="px-6 py-4 flex flex-col text-sm tracking-widest uppercase">
+        <li><a href="#biografia" class="mobile-link block py-4 border-b border-white/5 text-gray-300 hover:text-gold">Biografía</a></li>
+        <li><a href="#conciertos" class="mobile-link block py-4 border-b border-white/5 text-gray-300 hover:text-gold">Conciertos</a></li>
+        <li><a href="#repertorio" class="mobile-link block py-4 border-b border-white/5 text-gray-300 hover:text-gold">Repertorio</a></li>
+        <li><a href="#media" class="mobile-link block py-4 border-b border-white/5 text-gray-300 hover:text-gold">Media</a></li>
+        <li><a href="#contacto" class="mobile-link block py-4 text-gray-300 hover:text-gold">Contacto</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-center px-6 relative">
+      <div class="max-w-4xl pt-20">
+        <p class="reveal font-title text-gold tracking-[.4em] text-xs sm:text-sm uppercase mb-6">Música barroca · Antigua · Lírica</p>
+        <h1 class="reveal delay-1 font-display text-4xl sm:text-6xl lg:text-7xl font-medium leading-tight text-mist">
+          Alejandro Robaina <span class="text-gold/70 font-light">|</span> <span class="italic text-goldsoft">Sopranista</span>
+        </h1>
+        <div class="reveal delay-1 gold-line mx-auto my-8"></div>
+        <p class="reveal delay-2 text-gray-300 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+          Una voz de amplio registro y agilidad en el agudo, al servicio del repertorio barroco y de la música antigua.
+        </p>
+        <div class="reveal delay-3 mt-12">
+          <a href="#conciertos" class="inline-block border border-gold text-gold hover:bg-gold hover:text-carbon px-10 py-4 text-xs sm:text-sm tracking-[.25em] uppercase transition-all duration-500">
+            Próximos Conciertos
+          </a>
+        </div>
+      </div>
+      <a href="#biografia" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/60 hover:text-gold animate-bounce" aria-label="Bajar">
+        <i class="fa-solid fa-chevron-down"></i>
+      </a>
+    </section>
+
+    <!-- ============ BIOGRAFÍA ============ -->
+    <section id="biografia" class="py-24 lg:py-32 px-6 lg:px-10">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+        <div class="reveal order-2 lg:order-1">
+          <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Biografía</p>
+          <h2 class="font-display text-3xl sm:text-5xl text-mist leading-tight">Una voz canaria para el repertorio antiguo</h2>
+          <div class="gold-line my-7 !mx-0" style="background:linear-gradient(90deg,#c9a961,transparent)"></div>
+
+          <div id="bio-parrafos" class="space-y-5 text-gray-300 font-light leading-relaxed text-[17px]">
+            <p>
+              Sopranista canario, Alejandro Robaina cultiva un registro excepcional que alcanza el do sobreagudo, con una agilidad y una limpieza en el agudo que le permiten abordar con naturalidad el repertorio barroco, la música antigua y la lírica.
+            </p>
+            <p>
+              Cursa la titulación superior de Interpretación de Canto en el Conservatorio Superior de Música de Canarias, formación que compagina con una activa trayectoria escénica en las islas.
+            </p>
+            <p>
+              Miembro del coro de la Orquesta Filarmónica de Gran Canaria, desarrolla su carrera como intérprete con una convicción: la técnica al servicio de la emoción y del texto.
+            </p>
+          </div>
+
+          <div class="mt-10 grid grid-cols-3 gap-4 text-center">
+            <div class="border border-white/10 py-5">
+              <p class="font-display text-2xl text-gold">Do</p>
+              <p class="text-[11px] tracking-widest uppercase text-gray-400 mt-1">Sobreagudo</p>
+            </div>
+            <div class="border border-white/10 py-5">
+              <p class="font-display text-2xl text-gold">Barroco</p>
+              <p class="text-[11px] tracking-widest uppercase text-gray-400 mt-1">Repertorio</p>
+            </div>
+            <div class="border border-white/10 py-5">
+              <p class="font-display text-2xl text-gold">Canarias</p>
+              <p class="text-[11px] tracking-widest uppercase text-gray-400 mt-1">Origen</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Fotografía artística -->
+        <div class="reveal delay-2 order-1 lg:order-2 relative max-w-md mx-auto lg:max-w-none w-full">
+          <div class="absolute -inset-3 border border-gold/40 translate-x-4 translate-y-4"></div>
+          <div class="relative overflow-hidden bg-carbon3 aspect-[4/5]">
+            <!-- Sustituye esta imagen por una fotografía propia -->
+            <img id="foto-biografia" src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=900&q=80"
+                 alt="Fotografía artística de un concierto"
+                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-[1500ms] hover:scale-105"
+                 onerror="this.style.display='none'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-carbon/70 via-transparent to-transparent pointer-events-none"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONCIERTOS ============ -->
+    <section id="conciertos" class="py-24 lg:py-32 px-6 lg:px-10 bg-carbon2">
+      <div class="max-w-5xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Agenda</p>
+          <h2 class="font-display text-3xl sm:text-5xl text-mist">Próximos Conciertos</h2>
+          <div class="gold-line mx-auto mt-7"></div>
+        </div>
+
+        <!-- Los conciertos se cargan desde datos.json (editables en /admin). Lo de abajo es contenido de respaldo por si datos.json no se puede cargar. -->
+        <div class="space-y-5" id="events-list">
+          <article class="reveal card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
+              <p class="font-display text-5xl text-gold leading-none">12</p>
+              <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">Dic 2026</p>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-display text-xl sm:text-2xl text-mist">Concierto de Navidad barroca</h3>
+              <p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>Teatro Cuyás · Las Palmas de Gran Canaria</p>
+              <p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>20:00 h</p>
+            </div>
+            <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
+          </article>
+
+          <article class="reveal delay-1 card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
+              <p class="font-display text-5xl text-gold leading-none">21</p>
+              <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">Ene 2027</p>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-display text-xl sm:text-2xl text-mist">Recital de arias y cantatas</h3>
+              <p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>Auditorio · Canarias</p>
+              <p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>19:30 h</p>
+            </div>
+            <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
+          </article>
+
+          <article class="reveal delay-2 card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+            <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
+              <p class="font-display text-5xl text-gold leading-none">06</p>
+              <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">Mar 2027</p>
+            </div>
+            <div class="flex-1">
+              <h3 class="font-display text-xl sm:text-2xl text-mist">Música antigua en la Catedral</h3>
+              <p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>Catedral de Santa Ana · Las Palmas de Gran Canaria</p>
+              <p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>21:00 h</p>
+            </div>
+            <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ REPERTORIO ============ -->
+    <section id="repertorio" class="py-24 lg:py-32 px-6 lg:px-10">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Interpretación</p>
+          <h2 class="font-display text-3xl sm:text-5xl text-mist">Repertorio</h2>
+          <div class="gold-line mx-auto mt-7"></div>
+          <p class="text-gray-400 font-light max-w-2xl mx-auto mt-7 leading-relaxed">
+            Un universo sonoro donde la agilidad, el color y el agudo del sopranista encuentran su lugar natural.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <article class="reveal card border border-white/10 bg-carbon2 p-8">
+            <div class="w-14 h-14 border border-gold/50 text-gold flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-feather-pointed"></i></div>
+            <h3 class="font-display text-2xl text-mist mb-3">Música barroca</h3>
+            <p class="text-gray-400 font-light leading-relaxed text-[15px]">Arias y cantatas del Barroco, donde el virtuosismo, la ornamentación y la agilidad en el registro agudo cobran todo su sentido.</p>
+          </article>
+
+          <article class="reveal delay-1 card border border-white/10 bg-carbon2 p-8">
+            <div class="w-14 h-14 border border-gold/50 text-gold flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-scroll"></i></div>
+            <h3 class="font-display text-2xl text-mist mb-3">Música antigua</h3>
+            <p class="text-gray-400 font-light leading-relaxed text-[15px]">Repertorio anterior al clasicismo, abordado con sensibilidad hacia el texto, la retórica y el estilo propio de cada época.</p>
+          </article>
+
+          <article class="reveal delay-2 card border border-white/10 bg-carbon2 p-8">
+            <div class="w-14 h-14 border border-gold/50 text-gold flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-masks-theater"></i></div>
+            <h3 class="font-display text-2xl text-mist mb-3">Lírica</h3>
+            <p class="text-gray-400 font-light leading-relaxed text-[15px]">Arias y obras de concierto en las que la expresividad dramática y el control del agudo se ponen al servicio de la emoción.</p>
+          </article>
+        </div>
+
+        <div class="reveal text-center mt-14">
+          <a href="#contacto" class="inline-block border border-gold text-gold hover:bg-gold hover:text-carbon px-10 py-4 text-xs tracking-[.25em] uppercase transition-all duration-500">Proponer un concierto</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MEDIA ============ -->
+    <section id="media" class="py-24 lg:py-32 px-6 lg:px-10 bg-carbon2">
+      <div class="max-w-6xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Multimedia</p>
+          <h2 class="font-display text-3xl sm:text-5xl text-mist">Media</h2>
+          <div class="gold-line mx-auto mt-7"></div>
+        </div>
+
+        <!-- Los vídeos se cargan desde datos.json. Edítalos desde el panel /admin (Vídeos de YouTube). -->
+        <div id="videos-grid" class="grid md:grid-cols-2 gap-6">
+          <figure class="reveal media-item card border border-white/10 overflow-hidden bg-carbon">
+            <div class="media-thumb relative aspect-video cursor-pointer" data-youtube="">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="play-btn w-20 h-20 rounded-full border border-gold text-gold flex items-center justify-center text-2xl"><i class="fa-solid fa-play ml-1"></i></span>
+              </div>
+            </div>
+            <figcaption class="p-5">
+              <h3 class="font-display text-lg text-mist">Aria barroca</h3>
+              <p class="text-gray-500 text-sm font-light mt-1">Vídeo próximamente</p>
+            </figcaption>
+          </figure>
+
+          <figure class="reveal delay-1 media-item card border border-white/10 overflow-hidden bg-carbon">
+            <div class="media-thumb relative aspect-video cursor-pointer" data-youtube="">
+              <div class="absolute inset-0 flex items-center justify-center">
+                <span class="play-btn w-20 h-20 rounded-full border border-gold text-gold flex items-center justify-center text-2xl"><i class="fa-solid fa-play ml-1"></i></span>
+              </div>
+            </div>
+            <figcaption class="p-5">
+              <h3 class="font-display text-lg text-mist">Concierto en directo</h3>
+              <p class="text-gray-500 text-sm font-light mt-1">Vídeo próximamente</p>
+            </figcaption>
+          </figure>
+        </div>
+
+        <!-- Galería de actuaciones -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+          <div class="reveal card media-thumb aspect-square border border-white/10 flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>
+          <div class="reveal delay-1 card media-thumb aspect-square border border-white/10 flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>
+          <div class="reveal delay-2 card media-thumb aspect-square border border-white/10 flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>
+          <div class="reveal delay-3 card media-thumb aspect-square border border-white/10 flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>
+        </div>
+
+        <div class="reveal text-center mt-12">
+          <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 text-gold hover:text-goldsoft tracking-[.2em] text-xs uppercase transition-colors">
+            <i class="fa-brands fa-youtube text-lg"></i> Ver más en YouTube
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACTO ============ -->
+    <section id="contacto" class="py-24 lg:py-32 px-6 lg:px-10">
+      <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24">
+        <div class="reveal">
+          <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Contacto</p>
+          <h2 class="font-display text-3xl sm:text-5xl text-mist leading-tight">Hablemos de música</h2>
+          <div class="gold-line my-7" style="background:linear-gradient(90deg,#c9a961,transparent)"></div>
+          <p class="text-gray-300 font-light leading-relaxed mb-10">
+            Para conciertos, colaboraciones, contrataciones o cualquier consulta, escríbeme y te responderé lo antes posible.
+          </p>
+
+          <a href="mailto:arobaina.ct@gmail.com" class="flex items-center gap-5 group">
+            <span class="w-12 h-12 border border-gold/50 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-carbon transition-all duration-500"><i class="fa-regular fa-envelope"></i></span>
+            <span>
+              <span class="block text-[11px] tracking-[.25em] uppercase text-gray-500">Correo electrónico</span>
+              <span class="block text-mist group-hover:text-gold transition-colors">arobaina.ct@gmail.com</span>
+            </span>
+          </a>
+
+          <div class="mt-10">
+            <p class="text-[11px] tracking-[.25em] uppercase text-gray-500 mb-4">Redes sociales</p>
+            <div class="flex gap-4">
+              <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-facebook-f"></i></a>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-instagram"></i></a>
+              <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <form id="contact-form" class="reveal delay-1 space-y-8 border border-white/10 bg-carbon2 p-8 sm:p-10" novalidate>
+          <div>
+            <label for="nombre" class="block text-[11px] tracking-[.25em] uppercase text-gray-400 mb-2">Nombre</label>
+            <input id="nombre" name="nombre" type="text" required class="field w-full py-3 text-mist" placeholder="Tu nombre" />
+          </div>
+          <div>
+            <label for="correo" class="block text-[11px] tracking-[.25em] uppercase text-gray-400 mb-2">Correo electrónico</label>
+            <input id="correo" name="correo" type="email" required class="field w-full py-3 text-mist" placeholder="tu@correo.com" />
+          </div>
+          <div>
+            <label for="mensaje" class="block text-[11px] tracking-[.25em] uppercase text-gray-400 mb-2">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4" required class="field w-full py-3 text-mist resize-none" placeholder="¿En qué puedo ayudarte?"></textarea>
+          </div>
+          <p id="form-feedback" class="text-sm min-h-[1.25rem]" role="status" aria-live="polite"></p>
+          <button type="submit" class="w-full border border-gold text-gold hover:bg-gold hover:text-carbon py-4 text-xs tracking-[.3em] uppercase transition-all duration-500">
+            Enviar mensaje
+          </button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="border-t border-white/10 bg-carbon2 px-6 py-12 text-center">
+    <p class="font-title tracking-[.3em] text-gold text-sm mb-4">ALEJANDRO ROBAINA</p>
+    <p class="text-gray-500 text-sm font-light">&copy; <span id="year"></span> Alejandro Robaina. Todos los derechos reservados.</p>
+    <p class="text-gray-600 text-xs font-light mt-3 max-w-2xl mx-auto leading-relaxed">
+      Aviso legal: los contenidos de este sitio (textos, imágenes, vídeos y grabaciones) están protegidos por derechos de propiedad intelectual y no pueden reproducirse sin autorización expresa de su titular. Los datos enviados mediante el formulario se utilizan únicamente para responder a tu consulta.
+    </p>
+  </footer>
+
+  <script>
+    // Año del pie de página
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Navbar al hacer scroll
+    const navbar = document.getElementById('navbar');
+    const onScroll = () => navbar.classList.toggle('scrolled', window.scrollY > 40);
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    // Menú hamburguesa
+    const menuBtn = document.getElementById('menu-btn');
+    const menu = document.getElementById('mobile-menu');
+    const menuIcon = document.getElementById('menu-icon');
+    function setMenu(open) {
+      menu.classList.toggle('open', open);
+      menuBtn.setAttribute('aria-expanded', open);
+      menuIcon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+    }
+    menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
+    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => setMenu(false)));
+
+    // Animaciones de aparición
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    // Enlace activo en la navegación
+    const sections = ['biografia', 'conciertos', 'repertorio', 'media', 'contacto'].map(id => document.getElementById(id));
+    const links = document.querySelectorAll('.nav-link');
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px' });
+    sections.forEach(s => s && spy.observe(s));
+
+    // ===== Contenido dinámico desde datos.json (editable con Decap CMS en /admin) =====
+    const esc = (t) => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+    // Acepta el ID de 11 caracteres o una URL completa de YouTube
+    function youtubeId(v) {
+      v = String(v == null ? '' : v).trim();
+      if (!v) return '';
+      const m = v.match(/(?:youtu\.be\/|[?&]v=|\/embed\/|\/shorts\/)([\w-]{11})/);
+      if (m) return m[1];
+      return /^[\w-]{11}$/.test(v) ? v : '';
+    }
+
+    function observeNew(container) {
+      container.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    }
+
+    function renderBio(data) {
+      if (Array.isArray(data.biografia) && data.biografia.length) {
+        const box = document.getElementById('bio-parrafos');
+        box.innerHTML = data.biografia.map(t => '<p>' + esc(t) + '</p>').join('');
+      }
+      if (data.foto_biografia) {
+        const img = document.getElementById('foto-biografia');
+        img.style.display = '';
+        img.src = data.foto_biografia;
+      }
+    }
+
+    function renderConciertos(data) {
+      if (!Array.isArray(data.conciertos)) return;
+      const box = document.getElementById('events-list');
+      if (!data.conciertos.length) {
+        box.innerHTML = '<p class="text-center text-gray-400 font-light py-10">Próximamente se anunciarán nuevas fechas.</p>';
+        return;
+      }
+      box.innerHTML = data.conciertos.map((c, i) => `
+        <article class="reveal ${i % 3 ? 'delay-' + (i % 3) : ''} card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
+          <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
+            <p class="font-display text-5xl text-gold leading-none">${esc(c.dia)}</p>
+            <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">${esc(c.mes_anio)}</p>
+          </div>
+          <div class="flex-1">
+            <h3 class="font-display text-xl sm:text-2xl text-mist">${esc(c.titulo)}</h3>
+            ${c.lugar ? '<p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>' + esc(c.lugar) + '</p>' : ''}
+            ${c.hora ? '<p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>' + esc(c.hora) + '</p>' : ''}
+          </div>
+          <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
+        </article>`).join('');
+      observeNew(box);
+    }
+
+    function renderVideos(data) {
+      if (!Array.isArray(data.videos)) return;
+      const grid = document.getElementById('videos-grid');
+      if (!data.videos.length) {
+        grid.innerHTML = '<p class="md:col-span-2 text-center text-gray-400 font-light py-10">Próximamente habrá nuevos vídeos.</p>';
+        return;
+      }
+      grid.innerHTML = data.videos.map((v, i) => {
+        const id = youtubeId(v.id);
+        return `
+        <figure class="reveal ${i % 2 ? 'delay-1' : ''} media-item card border border-white/10 overflow-hidden bg-carbon">
+          <div class="media-thumb relative aspect-video ${id ? 'cursor-pointer' : ''} overflow-hidden" data-youtube="${esc(id)}">
+            ${id ? '<img src="https://i.ytimg.com/vi/' + esc(id) + '/hqdefault.jpg" alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover opacity-70" />' : ''}
+            <div class="absolute inset-0 flex items-center justify-center">
+              <span class="play-btn w-20 h-20 rounded-full border border-gold text-gold flex items-center justify-center text-2xl bg-carbon/40"><i class="fa-solid fa-play ml-1"></i></span>
+            </div>
+          </div>
+          <figcaption class="p-5">
+            <h3 class="font-display text-lg text-mist">${esc(v.titulo)}</h3>
+            <p class="text-gray-500 text-sm font-light mt-1">${id ? 'Pulsa para reproducir' : 'Vídeo próximamente'}</p>
+          </figcaption>
+        </figure>`;
+      }).join('');
+      observeNew(grid);
+    }
+
+    // Reproducción: al hacer clic se incrusta el vídeo (solo si tiene ID)
+    document.getElementById('videos-grid').addEventListener('click', (e) => {
+      const box = e.target.closest('[data-youtube]');
+      if (!box) return;
+      const id = youtubeId(box.dataset.youtube);
+      if (!id) return;
+      box.innerHTML = '<iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/' + id +
+        '?autoplay=1&rel=0" title="Vídeo de Alejandro Robaina" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>';
+      box.classList.remove('cursor-pointer');
+    });
+
+    // Carga de datos. Si falla (p. ej. abriendo el archivo sin servidor), se mantiene el contenido de respaldo.
+    fetch('datos.json', { cache: 'no-cache' })
+      .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(data => { renderBio(data); renderConciertos(data); renderVideos(data); })
+      .catch(err => console.warn('No se pudo cargar datos.json; se muestra el contenido de respaldo.', err));
+
+    // Netlify Identity: tras iniciar sesión, redirige al panel /admin
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on('init', user => {
+        if (!user) {
+          window.netlifyIdentity.on('login', () => { document.location.href = '/admin/'; });
+        }
+      });
+    }
+
+    // Formulario de contacto: valida y abre el cliente de correo con el mensaje preparado
+    const form = document.getElementById('contact-form');
+    const feedback = document.getElementById('form-feedback');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nombre = form.nombre.value.trim();
+      const correo = form.correo.value.trim();
+      const mensaje = form.mensaje.value.trim();
+      const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(correo);
+
+      if (!nombre || !emailOk || !mensaje) {
+        feedback.className = 'text-sm min-h-[1.25rem] text-red-400';
+        feedback.textContent = 'Por favor, completa todos los campos con un correo válido.';
+        return;
+      }
+      const subject = encodeURIComponent('Contacto web: ' + nombre);
+      const body = encodeURIComponent(mensaje + '\n\n—\n' + nombre + '\n' + correo);
+      window.location.href = 'mailto:arobaina.ct@gmail.com?subject=' + subject + '&body=' + body;
+
+      feedback.className = 'text-sm min-h-[1.25rem] text-gold';
+      feedback.textContent = 'Gracias, ' + nombre + '. Se abrirá tu aplicación de correo para enviar el mensaje.';
+      form.reset();
+    });
+  </script>
+</body>
+</html>

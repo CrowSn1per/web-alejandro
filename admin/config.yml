@@ -1,0 +1,75 @@
+backend:
+  name: git-gateway
+  branch: main
+
+locale: "es"
+
+# Las imágenes que subas desde el panel se guardan en la carpeta "images"
+media_folder: "images"
+public_folder: "/images"
+
+collections:
+  - name: "web"
+    label: "Contenido de la web"
+    files:
+      - name: "datos"
+        label: "Datos de la web"
+        file: "datos.json"
+        fields:
+          - label: "Foto de biografía"
+            name: "foto_biografia"
+            widget: "image"
+            required: false
+            hint: "Fotografía que aparece junto a tu biografía. Formato vertical (4:5) recomendado."
+
+          - label: "Párrafos de biografía"
+            name: "biografia"
+            widget: "list"
+            hint: "Cada elemento es un párrafo. Puedes añadir, borrar y reordenar."
+            field:
+              label: "Párrafo"
+              name: "parrafo"
+              widget: "text"
+
+          - label: "Conciertos"
+            name: "conciertos"
+            widget: "list"
+            label_singular: "concierto"
+            summary: "{{fields.dia}} {{fields.mes_anio}} · {{fields.titulo}}"
+            hint: "Añade, borra o reordena los conciertos que aparecen en la web."
+            fields:
+              - label: "Día"
+                name: "dia"
+                widget: "string"
+                hint: "Ejemplo: 12"
+              - label: "Mes y año"
+                name: "mes_anio"
+                widget: "string"
+                hint: "Ejemplo: Dic 2026"
+              - label: "Título"
+                name: "titulo"
+                widget: "string"
+              - label: "Lugar"
+                name: "lugar"
+                widget: "string"
+                hint: "Ejemplo: Teatro Cuyás · Las Palmas de Gran Canaria"
+              - label: "Hora"
+                name: "hora"
+                widget: "string"
+                hint: "Ejemplo: 20:00 h"
+
+          - label: "Vídeos de YouTube"
+            name: "videos"
+            widget: "list"
+            label_singular: "vídeo"
+            summary: "{{fields.titulo}}"
+            hint: "Añade, borra o reordena los vídeos de la sección Media."
+            fields:
+              - label: "Título"
+                name: "titulo"
+                widget: "string"
+              - label: "ID del vídeo de YouTube"
+                name: "id"
+                widget: "string"
+                required: false
+                hint: "Es la parte final de la URL: youtube.com/watch?v=ESTE_ID (11 caracteres). También sirve pegar la URL completa."
