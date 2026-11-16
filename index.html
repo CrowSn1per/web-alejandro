@@ -60,7 +60,7 @@
       background:
         radial-gradient(ellipse at 50% 30%, rgba(201,169,97,.14), transparent 60%),
         linear-gradient(180deg, rgba(17,17,17,.55) 0%, #111 100%),
-        url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80') center/cover no-repeat,
+        var(--hero-img, url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80')) center/cover no-repeat,
         #111;
     }
 
@@ -133,12 +133,12 @@
     <!-- ============ HERO ============ -->
     <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-center px-6 relative">
       <div class="max-w-4xl pt-20">
-        <p class="reveal font-title text-gold tracking-[.4em] text-xs sm:text-sm uppercase mb-6">Música barroca · Antigua · Lírica</p>
+        <p id="hero-sup" class="reveal font-title text-gold tracking-[.4em] text-xs sm:text-sm uppercase mb-6">Música barroca · Antigua · Lírica</p>
         <h1 class="reveal delay-1 font-display text-4xl sm:text-6xl lg:text-7xl font-medium leading-tight text-mist">
           Alejandro Robaina <span class="text-gold/70 font-light">|</span> <span class="italic text-goldsoft">Sopranista</span>
         </h1>
         <div class="reveal delay-1 gold-line mx-auto my-8"></div>
-        <p class="reveal delay-2 text-gray-300 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
+        <p id="hero-desc" class="reveal delay-2 text-gray-300 text-base sm:text-xl font-light max-w-2xl mx-auto leading-relaxed">
           Una voz de amplio registro y agilidad en el agudo, al servicio del repertorio barroco y de la música antigua.
         </p>
         <div class="reveal delay-3 mt-12">
@@ -157,7 +157,7 @@
       <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-14 lg:gap-20 items-center">
         <div class="reveal order-2 lg:order-1">
           <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Biografía</p>
-          <h2 class="font-display text-3xl sm:text-5xl text-mist leading-tight">Una voz canaria para el repertorio antiguo</h2>
+          <h2 id="bio-titulo" class="font-display text-3xl sm:text-5xl text-mist leading-tight">Una voz canaria para el repertorio antiguo</h2>
           <div class="gold-line my-7 !mx-0" style="background:linear-gradient(90deg,#c9a961,transparent)"></div>
 
           <div id="bio-parrafos" class="space-y-5 text-gray-300 font-light leading-relaxed text-[17px]">
@@ -172,7 +172,7 @@
             </p>
           </div>
 
-          <div class="mt-10 grid grid-cols-3 gap-4 text-center">
+          <div id="bio-stats" class="mt-10 grid grid-cols-3 gap-4 text-center">
             <div class="border border-white/10 py-5">
               <p class="font-display text-2xl text-gold">Do</p>
               <p class="text-[11px] tracking-widest uppercase text-gray-400 mt-1">Sobreagudo</p>
@@ -263,12 +263,12 @@
           <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Interpretación</p>
           <h2 class="font-display text-3xl sm:text-5xl text-mist">Repertorio</h2>
           <div class="gold-line mx-auto mt-7"></div>
-          <p class="text-gray-400 font-light max-w-2xl mx-auto mt-7 leading-relaxed">
+          <p id="repertorio-intro" class="text-gray-400 font-light max-w-2xl mx-auto mt-7 leading-relaxed">
             Un universo sonoro donde la agilidad, el color y el agudo del sopranista encuentran su lugar natural.
           </p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6">
+        <div id="repertorio-grid" class="grid md:grid-cols-3 gap-6">
           <article class="reveal card border border-white/10 bg-carbon2 p-8">
             <div class="w-14 h-14 border border-gold/50 text-gold flex items-center justify-center text-xl mb-6"><i class="fa-solid fa-feather-pointed"></i></div>
             <h3 class="font-display text-2xl text-mist mb-3">Música barroca</h3>
@@ -331,7 +331,7 @@
         </div>
 
         <!-- Galería de actuaciones -->
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
+        <div id="galeria-grid" class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6">
           <div class="reveal card media-thumb aspect-square border border-white/10 flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>
           <div class="reveal delay-1 card media-thumb aspect-square border border-white/10 flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>
           <div class="reveal delay-2 card media-thumb aspect-square border border-white/10 flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>
@@ -339,7 +339,7 @@
         </div>
 
         <div class="reveal text-center mt-12">
-          <a href="https://www.youtube.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 text-gold hover:text-goldsoft tracking-[.2em] text-xs uppercase transition-colors">
+          <a id="media-youtube" href="https://www.youtube.com/" target="_blank" rel="noopener" class="inline-flex items-center gap-3 text-gold hover:text-goldsoft tracking-[.2em] text-xs uppercase transition-colors">
             <i class="fa-brands fa-youtube text-lg"></i> Ver más en YouTube
           </a>
         </div>
@@ -353,24 +353,24 @@
           <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Contacto</p>
           <h2 class="font-display text-3xl sm:text-5xl text-mist leading-tight">Hablemos de música</h2>
           <div class="gold-line my-7" style="background:linear-gradient(90deg,#c9a961,transparent)"></div>
-          <p class="text-gray-300 font-light leading-relaxed mb-10">
+          <p id="contacto-intro" class="text-gray-300 font-light leading-relaxed mb-10">
             Para conciertos, colaboraciones, contrataciones o cualquier consulta, escríbeme y te responderé lo antes posible.
           </p>
 
-          <a href="mailto:arobaina.ct@gmail.com" class="flex items-center gap-5 group">
+          <a id="contacto-email" href="mailto:arobaina.ct@gmail.com" class="flex items-center gap-5 group">
             <span class="w-12 h-12 border border-gold/50 text-gold flex items-center justify-center group-hover:bg-gold group-hover:text-carbon transition-all duration-500"><i class="fa-regular fa-envelope"></i></span>
             <span>
               <span class="block text-[11px] tracking-[.25em] uppercase text-gray-500">Correo electrónico</span>
-              <span class="block text-mist group-hover:text-gold transition-colors">arobaina.ct@gmail.com</span>
+              <span id="contacto-email-texto" class="block text-mist group-hover:text-gold transition-colors">arobaina.ct@gmail.com</span>
             </span>
           </a>
 
           <div class="mt-10">
             <p class="text-[11px] tracking-[.25em] uppercase text-gray-500 mb-4">Redes sociales</p>
             <div class="flex gap-4">
-              <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-facebook-f"></i></a>
-              <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-instagram"></i></a>
-              <a href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-youtube"></i></a>
+              <a id="social-facebook" href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-facebook-f"></i></a>
+              <a id="social-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-instagram"></i></a>
+              <a id="social-youtube" href="https://www.youtube.com/" target="_blank" rel="noopener" aria-label="YouTube" class="w-12 h-12 border border-white/15 text-gray-300 hover:border-gold hover:text-gold flex items-center justify-center transition-all duration-500"><i class="fa-brands fa-youtube"></i></a>
             </div>
           </div>
         </div>
@@ -534,10 +534,85 @@
       box.classList.remove('cursor-pointer');
     });
 
+    // ===== Resto de textos y fotos (hero, estadísticas, repertorio, galería y contacto) =====
+    let CONTACT_EMAIL = 'arobaina.ct@gmail.com';
+
+    const $id = (id) => document.getElementById(id);
+    // Un campo vacío en el panel mantiene el texto original de la página
+    const setText = (id, v) => { const el = $id(id); if (el && typeof v === 'string' && v.trim()) el.textContent = v.trim(); };
+    const safeUrl = (u) => { u = String(u == null ? '' : u).trim(); return /^https?:\/\//i.test(u) ? u : ''; };
+    const safeImg = (u) => { u = String(u == null ? '' : u).trim(); return u && !/^(javascript|vbscript|data:text)/i.test(u) ? u : ''; };
+
+    function setLink(id, url) {
+      const a = $id(id);
+      if (!a) return;
+      const ok = safeUrl(url);
+      if (ok) { a.href = ok; a.style.display = ''; }
+      else if (typeof url === 'string') { a.style.display = 'none'; } // campo vaciado: se oculta el enlace
+    }
+
+    function renderExtras(data) {
+      // Hero
+      const h = data.hero || {};
+      setText('hero-sup', h.subtitulo_superior);
+      setText('hero-desc', h.subtitulo_descriptivo);
+      const bg = safeImg(h.imagen_fondo);
+      if (bg) $id('inicio').style.setProperty('--hero-img', 'url("' + bg.replace(/["\\\n\r]/g, c => encodeURIComponent(c)) + '")');
+
+      // Biografía: título y 3 recuadros
+      setText('bio-titulo', data.biografia_titulo);
+      const stats = document.querySelectorAll('#bio-stats > div');
+      (Array.isArray(data.estadisticas) ? data.estadisticas : []).forEach((e, i) => {
+        const ps = stats[i] && stats[i].querySelectorAll('p');
+        if (!ps) return;
+        if (e.valor && String(e.valor).trim()) ps[0].textContent = String(e.valor).trim();
+        if (e.etiqueta && String(e.etiqueta).trim()) ps[1].textContent = String(e.etiqueta).trim();
+      });
+
+      // Repertorio: introducción y 3 tarjetas (se conservan los iconos)
+      const r = data.repertorio || {};
+      setText('repertorio-intro', r.intro);
+      const cards = document.querySelectorAll('#repertorio-grid > article');
+      (Array.isArray(r.tarjetas) ? r.tarjetas : []).forEach((t, i) => {
+        const c = cards[i];
+        if (!c) return;
+        if (t.titulo && String(t.titulo).trim()) c.querySelector('h3').textContent = String(t.titulo).trim();
+        if (t.descripcion && String(t.descripcion).trim()) c.querySelector('p').textContent = String(t.descripcion).trim();
+      });
+
+      // Media: galería de fotos
+      if (Array.isArray(data.galeria) && data.galeria.length) {
+        const grid = $id('galeria-grid');
+        grid.innerHTML = data.galeria.map((g, i) => {
+          const src = safeImg(g && g.foto);
+          const delay = i % 4 ? 'delay-' + (i % 4) : '';
+          const base = 'reveal ' + delay + ' card media-thumb aspect-square border border-white/10 overflow-hidden';
+          return src
+            ? '<div class="' + base + '"><img src="' + esc(src) + '" alt="' + esc((g && g.descripcion) || 'Fotografía de una actuación') + '" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition duration-700" /></div>'
+            : '<div class="' + base + ' flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>';
+        }).join('');
+        observeNew(grid);
+      }
+
+      // Contacto
+      const c = data.contacto || {};
+      setText('contacto-intro', c.intro);
+      const mail = typeof c.email === 'string' ? c.email.trim() : '';
+      if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(mail)) {
+        CONTACT_EMAIL = mail;
+        $id('contacto-email').href = 'mailto:' + mail;
+        $id('contacto-email-texto').textContent = mail;
+      }
+      setLink('social-facebook', c.facebook);
+      setLink('social-instagram', c.instagram);
+      setLink('social-youtube', c.youtube);
+      if (safeUrl(c.youtube)) $id('media-youtube').href = safeUrl(c.youtube); // "Ver más en YouTube" usa el mismo canal
+    }
+
     // Carga de datos. Si falla (p. ej. abriendo el archivo sin servidor), se mantiene el contenido de respaldo.
     fetch('datos.json', { cache: 'no-cache' })
       .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(data => { renderBio(data); renderConciertos(data); renderVideos(data); })
+      .then(data => { renderBio(data); renderConciertos(data); renderVideos(data); renderExtras(data); })
       .catch(err => console.warn('No se pudo cargar datos.json; se muestra el contenido de respaldo.', err));
 
     // Netlify Identity: tras iniciar sesión, redirige al panel /admin
@@ -566,7 +641,7 @@
       }
       const subject = encodeURIComponent('Contacto web: ' + nombre);
       const body = encodeURIComponent(mensaje + '\n\n—\n' + nombre + '\n' + correo);
-      window.location.href = 'mailto:arobaina.ct@gmail.com?subject=' + subject + '&body=' + body;
+      window.location.href = 'mailto:' + CONTACT_EMAIL + '?subject=' + subject + '&body=' + body;
 
       feedback.className = 'text-sm min-h-[1.25rem] text-gold';
       feedback.textContent = 'Gracias, ' + nombre + '. Se abrirá tu aplicación de correo para enviar el mensaje.';
