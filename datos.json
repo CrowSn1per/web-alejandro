@@ -1,43 +1,39 @@
 {
-  "hero": {
-    "subtitulo_superior": "Música barroca · Antigua · Lírica",
-    "subtitulo_descriptivo": "Una voz de amplio registro y agilidad en el agudo, al servicio del repertorio barroco y de la música antigua.",
-    "imagen_fondo": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80"
-  },
+  "conciertos": [
+    {
+      "dia": "14",
+      "mes_anio": "Mar 27",
+      "titulo": "Concierto de compositoras ",
+      "lugar": "Gabinete Literario - Las Palmas de Gran Canaria",
+      "hora": "12:00 h"
+    }
+  ],
   "biografia_titulo": "Una voz canaria para el repertorio antiguo",
-  "foto_biografia": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=900&q=80",
+  "estadisticas": [
+    {
+      "valor": "Do",
+      "etiqueta": "Sobreagudo"
+    },
+    {
+      "valor": "Barroco",
+      "etiqueta": "Repertorio"
+    },
+    {
+      "valor": "Canarias",
+      "etiqueta": "Origen"
+    }
+  ],
+  "contacto": {
+    "intro": "Para conciertos, colaboraciones, contrataciones o cualquier consulta, escríbeme y te responderé lo antes posible.",
+    "email": "arobaina.ct@gmail.com",
+    "facebook": "https://www.facebook.com/",
+    "instagram": "https://www.instagram.com/",
+    "youtube": "https://www.youtube.com/"
+  },
   "biografia": [
     "Sopranista canario, Alejandro Robaina cultiva un registro excepcional que alcanza el do sobreagudo, con una agilidad y una limpieza en el agudo que le permiten abordar con naturalidad el repertorio barroco, la música antigua y la lírica.",
     "Cursa la titulación superior de Interpretación de Canto en el Conservatorio Superior de Música de Canarias, formación que compagina con una activa trayectoria escénica en las islas.",
     "Miembro del coro de la Orquesta Filarmónica de Gran Canaria, desarrolla su carrera como intérprete con una convicción: la técnica al servicio de la emoción y del texto."
-  ],
-  "estadisticas": [
-    { "valor": "Do", "etiqueta": "Sobreagudo" },
-    { "valor": "Barroco", "etiqueta": "Repertorio" },
-    { "valor": "Canarias", "etiqueta": "Origen" }
-  ],
-  "conciertos": [
-    {
-      "dia": "12",
-      "mes_anio": "Dic 2026",
-      "titulo": "Concierto de Navidad barroca",
-      "lugar": "Teatro Cuyás · Las Palmas de Gran Canaria",
-      "hora": "20:00 h"
-    },
-    {
-      "dia": "21",
-      "mes_anio": "Ene 2027",
-      "titulo": "Recital de arias y cantatas",
-      "lugar": "Auditorio · Canarias",
-      "hora": "19:30 h"
-    },
-    {
-      "dia": "06",
-      "mes_anio": "Mar 2027",
-      "titulo": "Música antigua en la Catedral",
-      "lugar": "Catedral de Santa Ana · Las Palmas de Gran Canaria",
-      "hora": "21:00 h"
-    }
   ],
   "repertorio": {
     "intro": "Un universo sonoro donde la agilidad, el color y el agudo del sopranista encuentran su lugar natural.",
@@ -56,6 +52,25 @@
       }
     ]
   },
+  "foto_biografia": "https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=900&q=80",
+  "galeria": [
+    {
+      "foto": "",
+      "descripcion": ""
+    },
+    {
+      "foto": "",
+      "descripcion": ""
+    },
+    {
+      "foto": "",
+      "descripcion": ""
+    },
+    {
+      "foto": "",
+      "descripcion": ""
+    }
+  ],
   "videos": [
     {
       "titulo": "Aria barroca",
@@ -66,17 +81,9 @@
       "id": ""
     }
   ],
-  "galeria": [
-    { "foto": "", "descripcion": "" },
-    { "foto": "", "descripcion": "" },
-    { "foto": "", "descripcion": "" },
-    { "foto": "", "descripcion": "" }
-  ],
-  "contacto": {
-    "intro": "Para conciertos, colaboraciones, contrataciones o cualquier consulta, escríbeme y te responderé lo antes posible.",
-    "email": "arobaina.ct@gmail.com",
-    "facebook": "https://www.facebook.com/",
-    "instagram": "https://www.instagram.com/",
-    "youtube": "https://www.youtube.com/"
+  "hero": {
+    "subtitulo_superior": "Música barroca · Antigua · Lírica",
+    "subtitulo_descriptivo": "Una voz de amplio registro y agilidad en el agudo, al servicio del repertorio barroco y de la música antigua.",
+    "imagen_fondo": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80"
   }
 }
