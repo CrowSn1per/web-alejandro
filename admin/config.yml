@@ -16,6 +16,31 @@ collections:
         label: "Datos de la web"
         file: "datos.json"
         fields:
+          # ---------- INICIO (HERO) ----------
+          - label: "Inicio (portada)"
+            name: "hero"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Subtítulo superior"
+                name: "subtitulo_superior"
+                widget: "string"
+                hint: "Línea pequeña sobre el titular. Ejemplo: Música barroca · Antigua · Lírica"
+              - label: "Subtítulo descriptivo"
+                name: "subtitulo_descriptivo"
+                widget: "text"
+                hint: "Frase bajo el titular principal."
+              - label: "Imagen de fondo"
+                name: "imagen_fondo"
+                widget: "image"
+                required: false
+                hint: "Mejor horizontal y de alta calidad (mínimo 1920 px de ancho). Se oscurece automáticamente."
+
+          # ---------- BIOGRAFÍA ----------
+          - label: "Título de la biografía"
+            name: "biografia_titulo"
+            widget: "string"
+
           - label: "Foto de biografía"
             name: "foto_biografia"
             widget: "image"
@@ -31,6 +56,25 @@ collections:
               name: "parrafo"
               widget: "text"
 
+          - label: "Recuadros de la biografía (3)"
+            name: "estadisticas"
+            widget: "list"
+            label_singular: "recuadro"
+            min: 3
+            max: 3
+            summary: "{{fields.valor}} · {{fields.etiqueta}}"
+            hint: "Los tres recuadros bajo la biografía. Mejor textos cortos."
+            fields:
+              - label: "Texto grande"
+                name: "valor"
+                widget: "string"
+                hint: "Ejemplo: Do"
+              - label: "Texto pequeño"
+                name: "etiqueta"
+                widget: "string"
+                hint: "Ejemplo: Sobreagudo"
+
+          # ---------- CONCIERTOS ----------
           - label: "Conciertos"
             name: "conciertos"
             widget: "list"
@@ -58,6 +102,31 @@ collections:
                 widget: "string"
                 hint: "Ejemplo: 20:00 h"
 
+          # ---------- REPERTORIO ----------
+          - label: "Repertorio"
+            name: "repertorio"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Texto introductorio"
+                name: "intro"
+                widget: "text"
+              - label: "Tarjetas (3)"
+                name: "tarjetas"
+                widget: "list"
+                label_singular: "tarjeta"
+                min: 3
+                max: 3
+                summary: "{{fields.titulo}}"
+                fields:
+                  - label: "Título"
+                    name: "titulo"
+                    widget: "string"
+                  - label: "Descripción"
+                    name: "descripcion"
+                    widget: "text"
+
+          # ---------- MEDIA ----------
           - label: "Vídeos de YouTube"
             name: "videos"
             widget: "list"
@@ -73,3 +142,50 @@ collections:
                 widget: "string"
                 required: false
                 hint: "Es la parte final de la URL: youtube.com/watch?v=ESTE_ID (11 caracteres). También sirve pegar la URL completa."
+
+          - label: "Galería de fotos (Media)"
+            name: "galeria"
+            widget: "list"
+            label_singular: "foto"
+            summary: "{{fields.descripcion}}"
+            hint: "Fotos de actuaciones bajo los vídeos. Se diseñó para 4 (cuadradas); si añades más, se colocan en filas de 4."
+            fields:
+              - label: "Foto"
+                name: "foto"
+                widget: "image"
+                required: false
+                hint: "Se recorta en formato cuadrado."
+              - label: "Descripción de la foto"
+                name: "descripcion"
+                widget: "string"
+                required: false
+                hint: "Texto alternativo para accesibilidad. Ejemplo: Recital en el Teatro Cuyás."
+
+          # ---------- CONTACTO ----------
+          - label: "Contacto"
+            name: "contacto"
+            widget: "object"
+            collapsed: true
+            fields:
+              - label: "Párrafo introductorio"
+                name: "intro"
+                widget: "text"
+              - label: "Correo electrónico"
+                name: "email"
+                widget: "string"
+                hint: "También es el destino del formulario de contacto."
+              - label: "Facebook"
+                name: "facebook"
+                widget: "string"
+                required: false
+                hint: "URL completa (https://...). Si lo dejas vacío, el icono se oculta."
+              - label: "Instagram"
+                name: "instagram"
+                widget: "string"
+                required: false
+                hint: "URL completa (https://...). Si lo dejas vacío, el icono se oculta."
+              - label: "YouTube"
+                name: "youtube"
+                widget: "string"
+                required: false
+                hint: "URL completa de tu canal. También se usa en «Ver más en YouTube»."
