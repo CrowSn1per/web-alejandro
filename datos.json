@@ -1,6 +1,20 @@
 {
   "conciertos": [
     {
+      "dia": "4 ",
+      "mes_anio": "Dic 2026",
+      "titulo": "Tosca (Como miembro de COFGC)",
+      "lugar": "Auditorio Alfredo Krauss - Las Palmas de Gran Canaria",
+      "hora": "20:00 h"
+    },
+    {
+      "dia": "18",
+      "mes_anio": "Dic 2026",
+      "titulo": "Concierto Benéfico de Navidad (Como miembro de COFGC)",
+      "lugar": "Auditorio Alfredo Krauss - Las Palmas de Gran Canaria",
+      "hora": "20:00 h"
+    },
+    {
       "dia": "14",
       "mes_anio": "Mar 27",
       "titulo": "Concierto de compositoras ",
