@@ -1,4 +1,30 @@
 {
+  "hero": {
+    "subtitulo_superior": "Música barroca · Antigua · Lírica",
+    "subtitulo_descriptivo": "Una voz de amplio registro y agilidad en el agudo, al servicio del repertorio barroco y de la música antigua.",
+    "imagen_fondo": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80"
+  },
+  "biografia_titulo": "Una voz canaria para el repertorio antiguo",
+  "foto_biografia": "/images/img_1522.jpg",
+  "biografia": [
+    "Alejandro Robaina, natural de Gran Canaria, es un sopranista que cultiva un registro excepcional, con una agilidad y una limpieza en el agudo que le permiten abordar con naturalidad el repertorio barroco, la música antigua y la lírica.",
+    "Cursa la titulación superior de Interpretación de Canto en el Conservatorio Superior de Música de Canarias, formación que compagina con una activa trayectoria escénica en las islas.",
+    "Miembro del coro de la Orquesta Filarmónica de Gran Canaria, desarrolla su carrera como intérprete con una convicción: la técnica al servicio de la emoción y del texto."
+  ],
+  "estadisticas": [
+    {
+      "valor": "Sopranista",
+      "etiqueta": "Contratenor"
+    },
+    {
+      "valor": "Barroco",
+      "etiqueta": "Repertorio"
+    },
+    {
+      "valor": "Canarias",
+      "etiqueta": "Origen"
+    }
+  ],
   "conciertos": [
     {
       "dia": "4 ",
@@ -22,33 +48,6 @@
       "hora": "12:00 h"
     }
   ],
-  "biografia_titulo": "Una voz canaria para el repertorio antiguo",
-  "estadisticas": [
-    {
-      "valor": "Sopranista",
-      "etiqueta": "Contratenor"
-    },
-    {
-      "valor": "Barroco",
-      "etiqueta": "Repertorio"
-    },
-    {
-      "valor": "Canarias",
-      "etiqueta": "Origen"
-    }
-  ],
-  "contacto": {
-    "intro": "Para conciertos, colaboraciones, contrataciones o cualquier consulta, escríbeme y te responderé lo antes posible.",
-    "email": "arobaina.ct@gmail.com",
-    "facebook": "https://www.facebook.com/",
-    "instagram": "https://www.instagram.com/alejandrorobaina_ct/",
-    "youtube": "https://www.youtube.com/@alejandrorobaina_ct"
-  },
-  "biografia": [
-    "Alejandro Robaina, natural de Gran Canaria, es un sopranista que cultiva un registro excepcional, con una agilidad y una limpieza en el agudo que le permiten abordar con naturalidad el repertorio barroco, la música antigua y la lírica.",
-    "Cursa la titulación superior de Interpretación de Canto en el Conservatorio Superior de Música de Canarias, formación que compagina con una activa trayectoria escénica en las islas.",
-    "Miembro del coro de la Orquesta Filarmónica de Gran Canaria, desarrolla su carrera como intérprete con una convicción: la técnica al servicio de la emoción y del texto."
-  ],
   "repertorio": {
     "intro": "Un universo sonoro donde la agilidad, el color y el agudo del sopranista encuentran su lugar natural.",
     "tarjetas": [
@@ -66,7 +65,16 @@
       }
     ]
   },
-  "foto_biografia": "/images/img_1522.jpg",
+  "videos": [
+    {
+      "titulo": "A Chloris - R. Hahn",
+      "id": "https://youtu.be/R3gQxdE8t54?si=arZGeXMQUuYhKouk"
+    },
+    {
+      "titulo": "Ombra mai fu - Händel",
+      "id": "https://youtu.be/KiH6BuiNp2c?si=tvdTYoPi_bXPBSsP"
+    }
+  ],
   "galeria": [
     {
       "foto": "/images/img_2674.jpg",
@@ -79,21 +87,19 @@
     {
       "foto": "/images/whatsapp-image-2026-10-16-at-14.06.20.jpeg",
       "descripcion": ""
-    }
-  ],
-  "videos": [
-    {
-      "titulo": "A Chloris - R. Hahn",
-      "id": "https://youtu.be/R3gQxdE8t54?si=arZGeXMQUuYhKouk"
     },
     {
-      "titulo": "Ombra mai fu - Händel",
-      "id": "https://youtu.be/KiH6BuiNp2c?si=tvdTYoPi_bXPBSsP"
+      "foto": "/images/img_5846.jpeg"
+    },
+    {
+      "foto": "/images/img_5847.jpeg"
     }
   ],
-  "hero": {
-    "subtitulo_superior": "Música barroca · Antigua · Lírica",
-    "subtitulo_descriptivo": "Una voz de amplio registro y agilidad en el agudo, al servicio del repertorio barroco y de la música antigua.",
-    "imagen_fondo": "https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80"
+  "contacto": {
+    "intro": "Para conciertos, colaboraciones, contrataciones o cualquier consulta, escríbeme y te responderé lo antes posible.",
+    "email": "arobaina.ct@gmail.com",
+    "facebook": "https://www.facebook.com/",
+    "instagram": "https://www.instagram.com/alejandrorobaina_ct/",
+    "youtube": "https://www.youtube.com/@alejandrorobaina_ct"
   }
 }
