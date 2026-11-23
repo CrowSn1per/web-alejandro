@@ -127,7 +127,12 @@
   "descargas": {
     "titulo": "Dossier y Currículum",
     "intro": "Documentación para programadores, organizadores y prensa.",
-    "archivos": []
+    "archivos": [
+      {
+        "titulo": "Currículum Artístico",
+        "archivo": "/images/cv_artistico_alejandro_robaina_paleta_web.pdf"
+      }
+    ]
   },
   "contacto": {
     "intro": "Para conciertos, colaboraciones, contrataciones o cualquier consulta, escríbeme y te responderé lo antes posible.",
