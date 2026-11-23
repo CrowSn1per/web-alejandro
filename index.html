@@ -3,8 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alejandro Robaina | Sopranista</title>
+  <title>Alejandro Robaina</title>
   <meta name="description" content="Alejandro Robaina, sopranista canario especializado en música barroca, antigua y lírica. Conciertos, repertorio y contacto." />
+  <link rel="canonical" href="https://alejandrorobaina.es/" />
+
+  <!-- Open Graph / redes sociales -->
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Alejandro Robaina" />
+  <meta property="og:locale" content="es_ES" />
+  <meta property="og:url" content="https://alejandrorobaina.es/" />
+  <meta property="og:title" content="Alejandro Robaina" />
+  <meta property="og:description" content="Alejandro Robaina, sopranista canario especializado en música barroca, antigua y lírica. Conciertos, repertorio y contacto." />
+  <meta property="og:image" content="https://alejandrorobaina.es/images/img_1522.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Alejandro Robaina" />
+  <meta name="twitter:description" content="Alejandro Robaina, sopranista canario especializado en música barroca, antigua y lírica. Conciertos, repertorio y contacto." />
+  <meta name="twitter:image" content="https://alejandrorobaina.es/images/img_1522.jpg" />
+
+  <!-- Favicon: se sustituye por el que subas en el panel (Ajustes generales). Este es solo el de respaldo. -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111111'/%3E%3Ctext x='32' y='42' font-family='Georgia,serif' font-size='28' text-anchor='middle' fill='%23c9a961'%3EAR%3C/text%3E%3C/svg%3E" />
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -56,12 +73,11 @@
     .gold-line { height: 1px; width: 72px; background: linear-gradient(90deg, transparent, #c9a961, transparent); }
 
     /* Hero */
-    .hero-bg {
+    .hero-bg { background: #111; }
+    .hero-overlay {
       background:
         radial-gradient(ellipse at 50% 30%, rgba(201,169,97,.14), transparent 60%),
-        linear-gradient(180deg, rgba(17,17,17,.55) 0%, #111 100%),
-        var(--hero-img, url('https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80')) center/cover no-repeat,
-        #111;
+        linear-gradient(180deg, rgba(17,17,17,.55) 0%, #111 100%);
     }
 
     /* Tarjetas */
@@ -105,7 +121,7 @@
         ALEJANDRO ROBAINA
       </a>
 
-      <ul class="hidden md:flex items-center gap-9 text-sm tracking-widest uppercase">
+      <ul id="nav-desktop" class="hidden md:flex items-center gap-9 text-sm tracking-widest uppercase">
         <li><a href="#biografia" class="nav-link text-gray-300 hover:text-gold transition-colors">Biografía</a></li>
         <li><a href="#conciertos" class="nav-link text-gray-300 hover:text-gold transition-colors">Conciertos</a></li>
         <li><a href="#repertorio" class="nav-link text-gray-300 hover:text-gold transition-colors">Repertorio</a></li>
@@ -119,7 +135,7 @@
     </nav>
 
     <div id="mobile-menu" class="md:hidden bg-carbon/95 backdrop-blur-md border-t border-gold/10">
-      <ul class="px-6 py-4 flex flex-col text-sm tracking-widest uppercase">
+      <ul id="nav-mobile" class="px-6 py-4 flex flex-col text-sm tracking-widest uppercase">
         <li><a href="#biografia" class="mobile-link block py-4 border-b border-white/5 text-gray-300 hover:text-gold">Biografía</a></li>
         <li><a href="#conciertos" class="mobile-link block py-4 border-b border-white/5 text-gray-300 hover:text-gold">Conciertos</a></li>
         <li><a href="#repertorio" class="mobile-link block py-4 border-b border-white/5 text-gray-300 hover:text-gold">Repertorio</a></li>
@@ -131,8 +147,12 @@
 
   <main>
     <!-- ============ HERO ============ -->
-    <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-center px-6 relative">
-      <div class="max-w-4xl pt-20">
+    <section id="inicio" class="hero-bg min-h-screen flex items-center justify-center text-center px-6 relative overflow-hidden">
+      <div class="absolute inset-0 overflow-hidden" aria-hidden="true">
+        <img id="hero-img" src="https://images.unsplash.com/photo-1507838153414-b4b713384a76?auto=format&fit=crop&w=1920&q=80" alt="" fetchpriority="high" class="w-full h-full object-cover" />
+      </div>
+      <div class="hero-overlay absolute inset-0" aria-hidden="true"></div>
+      <div class="relative z-10 max-w-4xl pt-20">
         <p id="hero-sup" class="reveal font-title text-gold tracking-[.4em] text-xs sm:text-sm uppercase mb-6">Música barroca · Antigua · Lírica</p>
         <h1 class="reveal delay-1 font-display text-4xl sm:text-6xl lg:text-7xl font-medium leading-tight text-mist">
           Alejandro Robaina <span class="text-gold/70 font-light">|</span> <span class="italic text-goldsoft">Sopranista</span>
@@ -142,12 +162,12 @@
           Una voz de amplio registro y agilidad en el agudo, al servicio del repertorio barroco y de la música antigua.
         </p>
         <div class="reveal delay-3 mt-12">
-          <a href="#conciertos" class="inline-block border border-gold text-gold hover:bg-gold hover:text-carbon px-10 py-4 text-xs sm:text-sm tracking-[.25em] uppercase transition-all duration-500">
+          <a id="hero-cta" href="#conciertos" class="inline-block border border-gold text-gold hover:bg-gold hover:text-carbon px-10 py-4 text-xs sm:text-sm tracking-[.25em] uppercase transition-all duration-500">
             Próximos Conciertos
           </a>
         </div>
       </div>
-      <a href="#biografia" class="absolute bottom-8 left-1/2 -translate-x-1/2 text-gold/60 hover:text-gold animate-bounce" aria-label="Bajar">
+      <a href="#biografia" class="absolute z-10 bottom-8 left-1/2 -translate-x-1/2 text-gold/60 hover:text-gold animate-bounce" aria-label="Bajar">
         <i class="fa-solid fa-chevron-down"></i>
       </a>
     </section>
@@ -193,10 +213,12 @@
           <div class="absolute -inset-3 border border-gold/40 translate-x-4 translate-y-4"></div>
           <div class="relative overflow-hidden bg-carbon3 aspect-[4/5]">
             <!-- Sustituye esta imagen por una fotografía propia -->
-            <img id="foto-biografia" src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=900&q=80"
-                 alt="Fotografía artística de un concierto"
-                 class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-[1500ms] hover:scale-105"
-                 onerror="this.style.display='none'" />
+            <div class="w-full h-full transition duration-[1500ms] hover:scale-105">
+              <img id="foto-biografia" src="https://images.unsplash.com/photo-1465847899084-d164df4dedc6?auto=format&fit=crop&w=900&q=80"
+                   alt="Fotografía artística de un concierto"
+                   class="w-full h-full object-cover grayscale hover:grayscale-0 transition duration-[1500ms]"
+                   onerror="this.style.display='none'" />
+            </div>
             <div class="absolute inset-0 bg-gradient-to-t from-carbon/70 via-transparent to-transparent pointer-events-none"></div>
           </div>
         </div>
@@ -212,46 +234,9 @@
           <div class="gold-line mx-auto mt-7"></div>
         </div>
 
-        <!-- Los conciertos se cargan desde datos.json (editables en /admin). Lo de abajo es contenido de respaldo por si datos.json no se puede cargar. -->
+        <!-- Los conciertos se cargan desde datos.json (editables en /admin). -->
         <div class="space-y-5" id="events-list">
-          <article class="reveal card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
-            <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
-              <p class="font-display text-5xl text-gold leading-none">12</p>
-              <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">Dic 2026</p>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-display text-xl sm:text-2xl text-mist">Concierto de Navidad barroca</h3>
-              <p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>Teatro Cuyás · Las Palmas de Gran Canaria</p>
-              <p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>20:00 h</p>
-            </div>
-            <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
-          </article>
-
-          <article class="reveal delay-1 card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
-            <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
-              <p class="font-display text-5xl text-gold leading-none">21</p>
-              <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">Ene 2027</p>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-display text-xl sm:text-2xl text-mist">Recital de arias y cantatas</h3>
-              <p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>Auditorio · Canarias</p>
-              <p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>19:30 h</p>
-            </div>
-            <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
-          </article>
-
-          <article class="reveal delay-2 card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
-            <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
-              <p class="font-display text-5xl text-gold leading-none">06</p>
-              <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">Mar 2027</p>
-            </div>
-            <div class="flex-1">
-              <h3 class="font-display text-xl sm:text-2xl text-mist">Música antigua en la Catedral</h3>
-              <p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>Catedral de Santa Ana · Las Palmas de Gran Canaria</p>
-              <p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>21:00 h</p>
-            </div>
-            <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
-          </article>
+          <p class="text-center text-gray-400 font-light py-10">Próximamente se anunciarán nuevas fechas.</p>
         </div>
       </div>
     </section>
@@ -346,6 +331,19 @@
       </div>
     </section>
 
+    <!-- ============ DESCARGAS ============ -->
+    <section id="descargas" hidden class="py-24 lg:py-32 px-6 lg:px-10">
+      <div class="max-w-4xl mx-auto">
+        <div class="reveal text-center mb-16">
+          <p class="font-title text-gold tracking-[.35em] text-xs uppercase mb-4">Documentación</p>
+          <h2 id="descargas-titulo" class="font-display text-3xl sm:text-5xl text-mist">Dossier y Currículum</h2>
+          <div class="gold-line mx-auto mt-7"></div>
+          <p id="descargas-intro" hidden class="text-gray-400 font-light max-w-2xl mx-auto mt-7 leading-relaxed"></p>
+        </div>
+        <div id="descargas-lista" class="space-y-5"></div>
+      </div>
+    </section>
+
     <!-- ============ CONTACTO ============ -->
     <section id="contacto" class="py-24 lg:py-32 px-6 lg:px-10">
       <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-16 lg:gap-24">
@@ -426,7 +424,7 @@
       menuIcon.className = open ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
     }
     menuBtn.addEventListener('click', () => setMenu(!menu.classList.contains('open')));
-    document.querySelectorAll('.mobile-link').forEach(l => l.addEventListener('click', () => setMenu(false)));
+    menu.addEventListener('click', (e) => { if (e.target.closest('.mobile-link')) setMenu(false); });
 
     // Animaciones de aparición
     const io = new IntersectionObserver((entries) => {
@@ -435,16 +433,15 @@
     document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
     // Enlace activo en la navegación
-    const sections = ['biografia', 'conciertos', 'repertorio', 'media', 'contacto'].map(id => document.getElementById(id));
-    const links = document.querySelectorAll('.nav-link');
     const spy = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
+          document.querySelectorAll('.nav-link').forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#' + e.target.id));
         }
       });
     }, { rootMargin: '-45% 0px -50% 0px' });
-    sections.forEach(s => s && spy.observe(s));
+    ['biografia', 'conciertos', 'repertorio', 'media', 'descargas', 'contacto']
+      .map(id => document.getElementById(id)).forEach(s => s && spy.observe(s));
 
     // ===== Contenido dinámico desde datos.json (editable con Decap CMS en /admin) =====
     const esc = (t) => String(t == null ? '' : t).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -472,6 +469,7 @@
         img.style.display = '';
         img.src = data.foto_biografia;
       }
+      frameImg(document.getElementById('foto-biografia'), data.foto_biografia_posicion, data.foto_biografia_zoom);
     }
 
     function renderConciertos(data) {
@@ -481,19 +479,27 @@
         box.innerHTML = '<p class="text-center text-gray-400 font-light py-10">Próximamente se anunciarán nuevas fechas.</p>';
         return;
       }
-      box.innerHTML = data.conciertos.map((c, i) => `
+      box.innerHTML = data.conciertos.map((c, i) => {
+        const url = safeUrl(c.url);
+        const btn = 'self-start sm:self-center px-6 py-3 text-[11px] tracking-[.25em] uppercase whitespace-nowrap';
+        let accion = '';
+        if (url) accion = '<a href="' + esc(url) + '" target="_blank" rel="noopener" class="' + btn + ' border border-gold text-gold hover:bg-gold hover:text-carbon transition-all duration-500"><i class="fa-solid fa-ticket mr-2"></i>Comprar entrada</a>';
+        else if (c.aviso === 'libre') accion = '<span class="' + btn + ' border border-white/15 text-gray-400">Entrada libre</span>';
+        else if (c.aviso === 'proximamente') accion = '<span class="' + btn + ' border border-white/15 text-gray-400">Próximamente</span>';
+        return `
         <article class="reveal ${i % 3 ? 'delay-' + (i % 3) : ''} card border border-white/10 bg-carbon p-6 sm:p-8 flex flex-col sm:flex-row sm:items-center gap-6">
           <div class="sm:w-28 shrink-0 text-center sm:border-r border-white/10 sm:pr-6">
-            <p class="font-display text-5xl text-gold leading-none">${esc(c.dia)}</p>
-            <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">${esc(c.mes_anio)}</p>
+            <p class="font-display text-5xl text-gold leading-none">${esc(String(c.dia == null ? '' : c.dia).trim())}</p>
+            <p class="font-title text-xs tracking-[.3em] uppercase text-gray-400 mt-2">${esc(String(c.mes_anio == null ? '' : c.mes_anio).trim())}</p>
           </div>
           <div class="flex-1">
-            <h3 class="font-display text-xl sm:text-2xl text-mist">${esc(c.titulo)}</h3>
+            <h3 class="font-display text-xl sm:text-2xl text-mist">${esc(String(c.titulo == null ? '' : c.titulo).trim())}</h3>
             ${c.lugar ? '<p class="text-gray-400 font-light mt-2 text-[15px]"><i class="fa-solid fa-location-dot text-gold mr-2"></i>' + esc(c.lugar) + '</p>' : ''}
             ${c.hora ? '<p class="text-gray-400 font-light mt-1 text-[15px]"><i class="fa-regular fa-clock text-gold mr-2"></i>' + esc(c.hora) + '</p>' : ''}
           </div>
-          <a href="#contacto" class="self-start sm:self-center border border-gold/60 text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">Más información</a>
-        </article>`).join('');
+          ${accion}
+        </article>`;
+      }).join('');
       observeNew(box);
     }
 
@@ -557,7 +563,8 @@
       setText('hero-sup', h.subtitulo_superior);
       setText('hero-desc', h.subtitulo_descriptivo);
       const bg = safeImg(h.imagen_fondo);
-      if (bg) $id('inicio').style.setProperty('--hero-img', 'url("' + bg.replace(/["\\\n\r]/g, c => encodeURIComponent(c)) + '")');
+      if (bg) $id('hero-img').src = bg;
+      frameImg($id('hero-img'), h.imagen_fondo_posicion, h.imagen_fondo_zoom);
 
       // Biografía: título y 3 recuadros
       setText('bio-titulo', data.biografia_titulo);
@@ -588,9 +595,11 @@
           const delay = i % 4 ? 'delay-' + (i % 4) : '';
           const base = 'reveal ' + delay + ' card media-thumb aspect-square border border-white/10 overflow-hidden';
           return src
-            ? '<div class="' + base + '"><img src="' + esc(src) + '" alt="' + esc((g && g.descripcion) || 'Fotografía de una actuación') + '" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition duration-700" /></div>'
+            ? '<div class="' + base + '"><div class="w-full h-full transition duration-700 hover:scale-105"><img src="' + esc(src) + '" alt="' + esc((g && g.descripcion) || 'Fotografía de una actuación') + '" loading="lazy" class="w-full h-full object-cover" /></div></div>'
             : '<div class="' + base + ' flex items-center justify-center text-gold/40 text-3xl"><i class="fa-regular fa-image"></i></div>';
         }).join('');
+        const conFoto = data.galeria.filter(x => safeImg(x && x.foto));
+        grid.querySelectorAll('img').forEach((img, k) => frameImg(img, conFoto[k].posicion, conFoto[k].zoom));
         observeNew(grid);
       }
 
@@ -609,10 +618,117 @@
       if (safeUrl(c.youtube)) $id('media-youtube').href = safeUrl(c.youtube); // "Ver más en YouTube" usa el mismo canal
     }
 
+    // ===== Encuadre y zoom de fotos (desde /admin) =====
+    const POS_RE = /^(left|center|right) (top|center|bottom)$/;
+    function frameImg(img, pos, zoom) {
+      if (!img) return;
+      pos = POS_RE.test(pos) ? pos : 'center center';
+      let z = parseInt(zoom, 10);
+      if (!(z >= 100)) z = 100;
+      if (z > 300) z = 300;
+      img.style.objectPosition = pos;
+      img.style.transformOrigin = pos;
+      img.style.transform = z === 100 ? '' : 'scale(' + (z / 100) + ')';
+    }
+
+    // ===== Ajustes generales: título, descripción y favicon =====
+    function setMeta(sel, v) { const m = document.querySelector(sel); if (m) m.setAttribute('content', v); }
+    function renderAjustes(data) {
+      const a = data.ajustes || {};
+      const titulo = typeof a.titulo_web === 'string' ? a.titulo_web.trim() : '';
+      if (titulo) {
+        document.title = titulo;
+        setMeta('meta[property="og:title"]', titulo);
+        setMeta('meta[name="twitter:title"]', titulo);
+      }
+      const desc = typeof a.descripcion_web === 'string' ? a.descripcion_web.trim() : '';
+      if (desc) {
+        setMeta('meta[name="description"]', desc);
+        setMeta('meta[property="og:description"]', desc);
+        setMeta('meta[name="twitter:description"]', desc);
+      }
+      const fav = safeImg(a.favicon);
+      if (fav) {
+        const ext = (fav.split('?')[0].split('.').pop() || '').toLowerCase();
+        const tipos = { png: 'image/png', svg: 'image/svg+xml', ico: 'image/x-icon', jpg: 'image/jpeg', jpeg: 'image/jpeg', webp: 'image/webp', gif: 'image/gif' };
+        let icon = document.querySelector('link[rel="icon"]');
+        if (!icon) { icon = document.createElement('link'); icon.rel = 'icon'; document.head.appendChild(icon); }
+        if (tipos[ext]) icon.setAttribute('type', tipos[ext]); else icon.removeAttribute('type');
+        icon.href = fav;
+        let touch = document.querySelector('link[rel="apple-touch-icon"]');
+        if (!touch) { touch = document.createElement('link'); touch.rel = 'apple-touch-icon'; document.head.appendChild(touch); }
+        touch.href = fav;
+      }
+    }
+
+    // ===== Descargas (dossier, currículum...) =====
+    const safeFile = (u) => { u = String(u == null ? '' : u).trim(); return /^https?:\/\//i.test(u) || /^\/(?!\/)/.test(u) ? u : ''; };
+    function descargasValidas(data) {
+      const d = data.descargas || {};
+      return (Array.isArray(d.archivos) ? d.archivos : []).filter(a => a && safeFile(a.archivo));
+    }
+    function renderDescargas(data) {
+      const d = data.descargas || {};
+      setText('descargas-titulo', d.titulo);
+      const intro = $id('descargas-intro');
+      if (typeof d.intro === 'string' && d.intro.trim()) { intro.textContent = d.intro.trim(); intro.hidden = false; }
+      const iconos = { pdf: 'fa-file-pdf', doc: 'fa-file-word', docx: 'fa-file-word', zip: 'fa-file-zipper', rar: 'fa-file-zipper', jpg: 'fa-file-image', jpeg: 'fa-file-image', png: 'fa-file-image', mp3: 'fa-file-audio', wav: 'fa-file-audio' };
+      const lista = $id('descargas-lista');
+      lista.innerHTML = descargasValidas(data).map((a, i) => {
+        const url = safeFile(a.archivo);
+        let ext = (url.split('?')[0].split('#')[0].split('.').pop() || '').toLowerCase();
+        if (!/^[a-z0-9]{1,5}$/.test(ext)) ext = '';
+        const titulo = String(a.titulo == null ? '' : a.titulo).trim() || 'Documento';
+        const desc = String(a.descripcion == null ? '' : a.descripcion).trim();
+        return `
+        <article class="reveal ${i % 3 ? 'delay-' + (i % 3) : ''} card border border-white/10 bg-white/[0.03] p-6 sm:p-7 flex flex-col sm:flex-row sm:items-center gap-5">
+          <div class="w-14 h-14 shrink-0 border border-gold/50 text-gold flex items-center justify-center text-xl"><i class="fa-solid ${iconos[ext] || 'fa-file-lines'}"></i></div>
+          <div class="flex-1 min-w-0">
+            <h3 class="font-display text-xl sm:text-2xl text-mist">${esc(titulo)}</h3>
+            ${desc ? '<p class="text-gray-400 font-light mt-1 text-[15px]">' + esc(desc) + '</p>' : ''}
+          </div>
+          <a href="${esc(url)}" download target="_blank" rel="noopener" class="self-start sm:self-center border border-gold text-gold hover:bg-gold hover:text-carbon px-6 py-3 text-[11px] tracking-[.25em] uppercase transition-all duration-500 whitespace-nowrap">
+            <i class="fa-solid fa-download mr-2"></i>Descargar${ext ? ' · ' + esc(ext.toUpperCase()) : ''}
+          </a>
+        </article>`;
+      }).join('');
+      observeNew(lista);
+    }
+
+    // ===== Orden de los apartados =====
+    const SECCIONES = { biografia: 'Biografía', conciertos: 'Conciertos', repertorio: 'Repertorio', media: 'Media', descargas: 'Descargas', contacto: 'Contacto' };
+    const ORDEN_DEFECTO = ['biografia', 'conciertos', 'repertorio', 'media', 'descargas', 'contacto'];
+    function renderOrden(data) {
+      const conDescargas = descargasValidas(data).length > 0;
+      let orden = Array.isArray(data.orden_secciones)
+        ? data.orden_secciones.filter(k => Object.prototype.hasOwnProperty.call(SECCIONES, k)) : [];
+      orden = orden.filter((k, i) => orden.indexOf(k) === i);
+      if (!conDescargas) orden = orden.filter(k => k !== 'descargas');
+      if (!orden.length) orden = ORDEN_DEFECTO.filter(k => conDescargas || k !== 'descargas');
+
+      const main = document.querySelector('main');
+      Object.keys(SECCIONES).forEach(k => { $id(k).hidden = orden.indexOf(k) === -1; });
+      orden.forEach((k, i) => {
+        const el = $id(k);
+        main.appendChild(el);                           // coloca cada apartado en su posición
+        el.classList.toggle('bg-carbon2', i % 2 === 1); // fondos alternos
+      });
+
+      $id('nav-desktop').innerHTML = orden.map(k =>
+        '<li><a href="#' + k + '" class="nav-link text-gray-300 hover:text-gold transition-colors">' + SECCIONES[k] + '</a></li>').join('');
+      $id('nav-mobile').innerHTML = orden.map((k, i) =>
+        '<li><a href="#' + k + '" class="mobile-link block py-4 ' + (i < orden.length - 1 ? 'border-b border-white/5 ' : '') + 'text-gray-300 hover:text-gold">' + SECCIONES[k] + '</a></li>').join('');
+      $id('hero-cta').style.display = orden.indexOf('conciertos') === -1 ? 'none' : '';
+    }
+
     // Carga de datos. Si falla (p. ej. abriendo el archivo sin servidor), se mantiene el contenido de respaldo.
     fetch('datos.json', { cache: 'no-cache' })
       .then(r => { if (!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
-      .then(data => { renderBio(data); renderConciertos(data); renderVideos(data); renderExtras(data); })
+      .then(data => {
+        [renderBio, renderConciertos, renderVideos, renderExtras, renderAjustes, renderDescargas, renderOrden].forEach(fn => {
+          try { fn(data); } catch (e) { console.warn('Error en ' + fn.name, e); }
+        });
+      })
       .catch(err => console.warn('No se pudo cargar datos.json; se muestra el contenido de respaldo.', err));
 
     // Netlify Identity: tras iniciar sesión, redirige al panel /admin
